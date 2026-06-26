@@ -53,7 +53,7 @@ with st.sidebar:
             st.error("Enter an amount!")
         else:
             try:
-                amount = float(amount_str)   # Gatekeeper: int/float casting
+                amount = float(amount_str)
                 if amount <= 0:
                     st.error("Amount must be positive!")
                 else:
@@ -67,7 +67,7 @@ with st.sidebar:
                     save_expenses(st.session_state.expenses)
                     st.success("Added!")
                     st.rerun()
-            except ValueError:   # Defensive Coding
+            except ValueError: 
                 st.error("Invalid! Enter numbers only.")
 
     st.divider()
@@ -83,7 +83,7 @@ st.markdown("Track every rupee. Know where it goes.")
 st.divider()
 
 # ---------- STATS ROW ----------
-total = sum(e["amount"] for e in expenses)   # Accumulator
+total = sum(e["amount"] for e in expenses) 
 count = len(expenses)
 avg = total / count if count > 0 else 0
 biggest = max((e["amount"] for e in expenses), default=0)
